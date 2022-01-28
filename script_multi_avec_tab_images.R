@@ -1,7 +1,7 @@
-#sans enlever les tabs du jeu de données
-#importer le jeu de données
+#yyysans enlever les tabs du jeu de donnï¿½es
+#importer le jeu de donnï¿½es
 pictdata <- read.delim("C:/Users/clare/Desktop/R_GNSS/multi/pictdata_29042000 (1).txt")
-
+t
 #concatener date et heure
 pictdata$DateTime=paste(pictdata$Date,pictdata$X)
 
@@ -18,16 +18,16 @@ pictdata$Longitude=pictdata$AEX
 #choisir les bonnes colonnes
 pictdata=subset(pictdata,select=c(8,9,25))
 
-#enlever les lignes pour lesquelles il n'y a pas de coordonnées (utile?)
+#enlever les lignes pour lesquelles il n'y a pas de coordonnï¿½es (utile?)
 #pictdata=subset(pictdata,Latitude!="N99:99.9999")
 
-#récupérer les noms des photos
-Files=list.files(path="C:\\Users\\clare\\Desktop\\Données_stage\\Nettoyage\\Culture")
+#rï¿½cupï¿½rer les noms des photos
+Files=list.files(path="C:\\Users\\clare\\Desktop\\Donnï¿½es_stage\\Nettoyage\\Culture")
 
 #garder uniquement la date et l'heure et mettre au bon format
 Files2=as.POSIXlt(Files, format="chassis_%Y-%m-%d_%H.%M.%S.jpg")
 
-#Passer la date et heure au format chaine de caractères
+#Passer la date et heure au format chaine de caractï¿½res
 Files3=as.character.Date(Files2)
 pictdata$DateTime2=as.character.Date(pictdata$DateTime)
 
@@ -38,5 +38,5 @@ D$nom_images=Files
 #enlever les colonnes inutiles
 D=subset(D,select=c(1,2,5))
 
-#enregistrer le fichier csv créé
+#enregistrer le fichier csv crï¿½ï¿½
 write.csv2(D, file = "Coord_GNSS_images.csv", row.names = FALSE)
